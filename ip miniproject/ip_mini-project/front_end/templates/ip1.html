@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Itinerary Planner</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">>
+<script>
+function fetch()
+ {
+  var get  = document.getElementById("get").value;
+  document.getElementById("put").value = get;
+ }
+</script>
+  </head>
+  <body>
+    <header>
+      <h1>Itinerary Planner</h1>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Destinations</a></li>
+          <li><a href="#">My Plans</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <main>
+      <h2>Find your next adventure</h2>
+      <form action="{{ url_for('popular_places') }}" method="GET">
+        <label for="destination">Destination:</label>
+        <input type="text" id="destination" name="destination">
+	   <label for="enter radius">Radius(in km):</label>
+        <input type="range" min="1" max="500" id="get" step="0.5" onchange="fetch()"name="radius">
+	   <input type="text" id="put" />
+        <label for="start-date">Start date:</label>
+        <input type="date" id="start-date" name="start-date">
+        <label for="end-date">End date:</label>
+        <input type="date" id="end-date" name="end-date">
+        <button type="submit">Search</button>
+      </form>
+    </main>
+    
+    <footer>
+      <p>&copy; 2023 Itinerary Planner</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+ background-image: url('itinerary planner.png');
+  background-size: cover
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+header {
+  background-color: yellow;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+nav ul {
+  display: flex;
+}
+
+nav ul li {
+  margin: 0 10px;
+}
+
+nav ul li a {
+  color: red;
+  text-decoration: none;
+}
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+form input {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+button[type="submit"] {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
