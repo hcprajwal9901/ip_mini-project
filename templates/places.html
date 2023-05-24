@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Places</title>
+  <script>
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        console.log("Geolocation is not supported by this browser.");
+      }
+    }
+
+    function showPosition(position) {
+      document.getElementById('latitude').value = position.coords.latitude;
+      document.getElementById('longitude').value = position.coords.longitude;
+    }
+  </script>
+</head>
+<body>
+  <form action="/process_form" method="post">
+    <label for="radius">Enter Radius:</label>
+    <input type="number" id="radius" name="radius" required>
+    
+    <label>Filter by Place Type:</label>
+    <input type="checkbox" id="placeType_all" name="placeType" value="all" checked>
+    <label for="placeType_all">All</label>
+    <input type="checkbox" id="placeType_temple" name="placeType" value="temple">
+    <label for="placeType_temple">Temple</label>
+    <input type="checkbox" id="placeType_hotel" name="placeType" value="hotel">
+    <label for="placeType_hotel">Hotel</label>
+    <input type="checkbox" id="placeType_park" name="placeType" value="park">
+    <label for="placeType_park">Park</label>
+    <input type="checkbox" id="placeType_movietheatre" name="placeType" value="movietheatre">
+    <label for="placeType_movietheatre">Movie Theatre</label>
+    
+    
+    <input type="hidden" id="latitude" name="latitude">
+    <input type="hidden" id="longitude" name="longitude">
+    
+    <button type="submit">Submit</button>
+  </form>
+  <script>
+    getLocation();
+  </script>
+  <h1>Places</h1>
+  
+  <ul>
+    {% for place in places %}
+      <li>
+        <h3>{{ place.name }}</h3>
+        {% if place.photo_url %}
+          <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&maxheight=400&photoreference={{ place.photo_url }}&key=AIzaSyAfWP_iKshvMZmoUhz4VKXC4y3xoDTmE-4" alt="Place Image">
+        {% endif %}
+        {% if place.rating %}
+          <p>Rating: {{ place.rating }}</p>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+  <a href="/plan"><button type="button">Itinerary Planner</button></a>
+</body>
+</html>

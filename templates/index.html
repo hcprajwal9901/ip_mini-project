@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Place Filter</title>
+  <script>
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        console.log("Geolocation is not supported by this browser.");
+      }
+    }
+
+    function showPosition(position) {
+      document.getElementById('latitude').value = position.coords.latitude;
+      document.getElementById('longitude').value = position.coords.longitude;
+    }
+  </script>
+</head>
+<body>
+  <h1>Place Filter</h1>
+  
+  <form action="/process_form" method="post">
+    <label for="radius">Enter Radius:</label>
+    <input type="number" id="radius" name="radius" required>
+    
+    <label>Filter by Place Type:</label>
+    <input type="checkbox" id="placeType_all" name="placeType" value="all" checked>
+    <label for="placeType_all">All</label>
+    <input type="checkbox" id="placeType_temple" name="placeType" value="temple">
+    <label for="placeType_temple">Temple</label>
+    <input type="checkbox" id="placeType_hotel" name="placeType" value="hotel">
+    <label for="placeType_hotel">Hotel</label>
+    <input type="checkbox" id="placeType_park" name="placeType" value="park">
+    <label for="placeType_park">Park</label>
+    <input type="checkbox" id="placeType_movietheatre" name="placeType" value="movietheatre">
+    <label for="placeType_movietheatre">Movie Theatre</label>
+    
+    
+    <input type="hidden" id="latitude" name="latitude">
+    <input type="hidden" id="longitude" name="longitude">
+    
+    <button type="submit">Submit</button>
+  </form>
+  
+  <script>
+    getLocation();
+  </script>
+</body>
+</html>
