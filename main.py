@@ -6,7 +6,7 @@ rating=[]
 latitude=0
 longitude=0
 
-app.secret_key = 'gofuckyourself'
+
 @app.get('/')
 def home():
 
@@ -56,8 +56,8 @@ def process_form():
 
     rating+=top_rated_places
     for place in rating:
-        encoded_name = place['name'].encode(sys.stdout.encoding, errors='replace')
-        print(encoded_name.decode())
+          encoded_name = place['name'].encode('utf-8', errors='replace')
+          print(encoded_name.decode('utf-8', errors='replace'))
     
   
     return render_template('places.html', places=places)
