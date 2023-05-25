@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request,session
 import requests,sys
 
+
 app = Flask(__name__)
 rating=[]
 latitude=0
@@ -22,6 +23,8 @@ def process_form():
     place_types = request.form.getlist('placeType')
     latitude=request.form.get('latitude')
     longitude=request.form.get('longitude')
+    print(latitude)
+    print(longitude)
     # Do something with the retrieved values, such as storing them in a database
     
     api_key = 'AIzaSyAfWP_iKshvMZmoUhz4VKXC4y3xoDTmE-4'
@@ -67,6 +70,27 @@ def plan():
     
     return render_template('itinerary.html', top_rated_places=rating,user_latitude=latitude,user_longitude=longitude)
 
+@app.route('/place_info/<place_id>')
+
+def place_info(place_id):
+    def get_place_details(place_id):
+        api_key = 'AIzaSyAfWP_iKshvMZmoUhz4VKXC4y3xoDTmE-4'  # Replace with your own API key
+        url = f'https://maps.googleapis.com/maps/api/place/details/json'
+        params = {
+            'place_id': place_id,
+            'key': api_key
+        }
+        response = requests.get(url, params=params)
+        data = response.json()
+        place = data['result']
+        return place
+
+    place = get_place_details(place_id)
+    return render_template('place_info.html', place=place)
+
+
+
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0',port=8000)
 

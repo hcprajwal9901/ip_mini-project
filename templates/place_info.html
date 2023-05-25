@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Place Information</title>
+</head>
+<body>
+  <h1>{{ place.name }}</h1>
+  {% if place.rating %}
+    <p>Rating: {{ place.rating }}</p>
+  {% endif %}
+  {% if place.formatted_address %}
+    <p>Address: {{ place.formatted_address }}</p>
+  {% endif %}
+  {% if place.website %}
+    <p>Website: <a href="{{ place.website }}">{{ place.website }}</a></p>
+  {% endif %}
+  {% if place.types and 'tourist_attraction' in place.types %}
+    <h2>Things to Do:</h2>
+    <ul>
+      {% for activity in place.activities %}
+        <li>{{ activity }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  <!-- Add more information as needed -->
+</body>
+</html>
