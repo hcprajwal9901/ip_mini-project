@@ -22,17 +22,19 @@
     <label for="radius">Enter Radius:</label>
     <input type="number" id="radius" name="radius" required>
     
-    <label>Filter by Place Type:</label>
-    <input type="checkbox" id="placeType_all" name="placeType" value="all" checked>
-    <label for="placeType_all">All</label>
-    <input type="checkbox" id="placeType_temple" name="placeType" value="temple">
-    <label for="placeType_temple">Temple</label>
-    <input type="checkbox" id="placeType_hotel" name="placeType" value="hotel">
-    <label for="placeType_hotel">Hotel</label>
-    <input type="checkbox" id="placeType_park" name="placeType" value="park">
-    <label for="placeType_park">Park</label>
-    <input type="checkbox" id="placeType_movietheatre" name="placeType" value="movietheatre">
-    <label for="placeType_movietheatre">Movie Theatre</label>
+    <label for="placeType">Filter by Place Type:</label>
+  <select id="placeType" name="placeType">
+    <option value="all" selected>All</option>
+    <option value="temple">Temple</option>
+    <option value="hotel">Hotel</option>
+    <option value="park">Park</option>
+    <option value="Busstop">BUS STOP</option>
+    <option value="metrostation">metro</option>
+    <option value="school">school/colleges</option>
+    <option value="policestation">policestation</option>
+    <option value="hospital">hospital</option>
+    <option value="movietheatre">Movie Theatre</option>
+  </select>
     
     
     <input type="hidden" id="latitude" name="latitude">
@@ -50,7 +52,9 @@
       <li>
         <h3>{{ place.name }}</h3>
         {% if place.photo_url %}
+        <a href="{{ url_for('place_info', place_id=place.place_id) }}">
           <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&maxheight=400&photoreference={{ place.photo_url }}&key=AIzaSyAfWP_iKshvMZmoUhz4VKXC4y3xoDTmE-4" alt="Place Image">
+          </a>
         {% endif %}
         {% if place.rating %}
           <p>Rating: {{ place.rating }}</p>

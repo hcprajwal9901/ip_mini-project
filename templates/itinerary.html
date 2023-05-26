@@ -33,7 +33,7 @@
     {% for place in top_rated_places %}
       <div class="roadmap-item">
         {% if place.photo_url %}
-          <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&maxheight=400&photoreference={{ place.photo_url }}&key=AIzaSyAfWP_iKshvMZmoUhz4VKXC4y3xoDTmE-4" alt="Place Image">
+          <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&maxheight=400&photoreference={{ place.photo_url }}&key=YOUR_API_KEY" alt="Place Image">
         {% endif %}
         <div>
           <h3>{{ place.name }}</h3>
@@ -79,10 +79,26 @@
         }
       });
     }
+
+    function showDirections() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          const userLat = position.coords.latitude;
+          const userLng = position.coords.longitude;
+          const destLat = {{ top_rated_places[0].geometry.location.lat }};
+          const destLng = {{ top_rated_places[0].geometry.location.lng }};
+          const url = `https://www.google.com/maps/dir/${userLat},${userLng}/${destLat},${destLng}`;
+          window.open(url);
+        });
+      } else {
+        alert("Geolocation is not supported by your browser.");
+      }
+    }
   </script>
   
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfWP_iKshvMZmoUhz4VKXC4y3xoDTmE-4&callback=initMap" async defer></script>
   <div id="directionsPanel"></div>
 
+  <button onclick="showDirections()">Show Directions</button>
 </body>
 </html>
