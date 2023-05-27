@@ -1,0 +1,71 @@
+h1 {
+    text-align: center;
+    margin: 20px;
+  }
+  /* Styles for the form */
+  form {
+    max-width: 400px;
+    margin: auto;
+    margin-top: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: auto;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .bi {
+    background: url("background-image.png");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: auto;
+    margin-top:top;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+  }
+
+  
+  /* Styles for the form labels */
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  
+  /* Styles for the form input fields */
+  input[type="number"] {
+    width: 100%;
+    padding: 8px;
+  }
+  
+  /* Styles for the form dropdown menu */
+  select {
+    width: 100%;
+    padding: 8px;
+  }
+  
+  /* Styles for the form submit button */
+  button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  
+  /* Additional styles for the page */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+  }
+  

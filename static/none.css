@@ -1,0 +1,19 @@
+.image {
+    background-image: url("not_found.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  h1{
+    margin-left: 600px;
+    color:white;
+    font-size: 100px;
+  }
+  p{
+    margin-left: 600px;
+    color:white;
+    font-size: 40px;
+  }

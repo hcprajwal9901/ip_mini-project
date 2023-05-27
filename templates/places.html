@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Places</title>
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='places.css') }}">
   <script>
     function getLocation() {
       if (navigator.geolocation) {
@@ -40,7 +41,11 @@
     <input type="hidden" id="latitude" name="latitude">
     <input type="hidden" id="longitude" name="longitude">
     
-    <button type="submit">Submit</button>
+    
+    <div class="button-container">
+      <button type="submit">Submit</button>
+      <a href="/plan"><button type="button">Itinerary Planner</button></a>
+    </div>
   </form>
   <script>
     getLocation();
@@ -62,6 +67,6 @@
       </li>
     {% endfor %}
   </ul>
-  <a href="/plan"><button type="button">Itinerary Planner</button></a>
+  
 </body>
 </html>
